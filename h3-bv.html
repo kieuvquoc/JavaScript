@@ -6,6 +6,20 @@
     <title>Document</title>
 </head>
 <body>
+    <h4>1.In ra cac so 1-10:</h4>
+    <button onclick="bai1()">1</button>
+    <h4>2.In ra cac so le 1-10:</h4>
+    <button onclick="bai2()">2</button>
+    <h4>3.In ra cac so le 1-10 va be hon 5:</h4>
+    <button onclick="bai3()">3</button>
+    <h4>4.In ra cac so le 1-10 va in so 6:</h4>
+    <button onclick="bai4()">4</button>
+    <h4>5.Tinh tong 1-10:</h4>
+    <button onclick="bai5()">5</button>
+    <h4>6.Tinh tong s = 1 + 1/n:</h4>
+    <button onclick="bai6()">6</button>
+    <h4>7.Tim so lon nhat cua 3 so</h4>
+    <button onclick="bai7()">7</button>
     <script>
         // khai bao 1 beien trong js thi có 3 cách: var, let, const
     // var : khai báo biến trung lặp dc
@@ -152,9 +166,56 @@
     //     }
     // }
 
+    // function demo(x, y, z){
+     
+    //   if(z==true){
+          
+    //       // goi hàm trong hàm
+    //       tinhTong(x, y)
+
+    //   }else{
+    //       tinhNhan(x, y)
+    //   }
+      
+    // }
+
+    // chia nho function ra cho đơn gian
+    // function tinhTong(x, y){
+    //     tong = x + y;
+
+    //     alert(tong)
+    // }
+    // function tinhNhan(x, y){
+    //     tong = x * y;
+
+    //     alert(tong)
+    // }
+
+    // cong thuc e tao săn
+    // function  tinhSum(a, b) {
+    //   s = 0
+    //   for (var i = a; i < b; i++) {
+    //     s = s + i
+    //   }
+    //   alert(s)
+    // }
+
+    // goi demo ra chay
+    // truyen 2 tham so vao hàm
+    // demo(2,3)
+
+    
+    
     console.log("In ra cac so 1-10:");
     for(let i=1;i<11;i++){
         console.log(i);
+    }
+    function bai1(){
+        let chuoi="";
+        for(let i=1;i<11;i++){
+        chuoi+=i+" ";
+        }
+        alert(chuoi);
     }
 
     console.log("In ra cac so le 1-10:");
@@ -163,12 +224,30 @@
             console.log(i);
         }
     }
+    function bai2(){
+        let chuoi="";
+        for(let i=1;i<11;i++){
+            if(i%2!=0){
+                chuoi+=i+" ";
+            }
+        }
+        alert(chuoi);
+    }
 
     console.log("In ra cac so le 1-10 va <5 :");
     for(let i=1;i<11;i++){
         if(i<5){
             console.log(i);
         }
+    }
+    function bai3(){
+        let chuoi="";
+        for(let i=1;i<11;i++){
+            if(i<5){
+            chuoi+=i+" ";
+        }
+        }
+        alert(chuoi);
     }
 
     console.log("In ra cac so le 1-10 va in so 6:");
@@ -178,6 +257,16 @@
             break;
         }
     }
+    function bai4(){
+        let chuoi="";
+        for(let i=1;i<11;i++){
+            if(i=6){
+            chuoi+=i+" ";
+            break;
+            }
+        }
+        alert(chuoi);
+    }
 
     console.log("Tinh tong 1-10:");
     var tong=0;
@@ -185,6 +274,13 @@
         tong+=i;
     }
     console.log(tong);
+    function bai5(){
+        let chuoi=0;
+        for(let i=1;i<11;i++){
+            chuoi+=i;
+        }
+        alert(chuoi);
+    }
 
     console.log("Tinh tong s = 1 + 1/n:");
     let n=5;
@@ -193,6 +289,14 @@
         tong=1+1/n;
     }
     console.log(tong);
+    function bai6(){
+        let n=5;
+        let chuoi=0;
+        for(let i=1;i<11;i++){
+            chuoi=1+1/n;
+        }
+        alert(chuoi);
+    }
 
     console.log("Tim so lon nhat cua 3 so");
     let x1=15;
@@ -203,7 +307,16 @@
     } else if( x2>x3){
         console.log("x2="+x2+" la so lon nhat");
     } else console.log("x3="+x3+" la so lon nhat");
-
+    function bai7(){
+        let x1=15;
+    let x2=9;
+    let x3=10;
+    if(x1>x2&&x1>x3){
+        alert("x1="+x1+" la so lon nhat");
+    } else if( x2>x3){
+        alert("x2="+x2+" la so lon nhat");
+    } else alert("x3="+x3+" la so lon nhat");
+    }
     </script>
 </body>
 </html>
