@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // khai bao 1 beien trong js thi có 3 cách: var, let, const
+    // var : khai báo biến trung lặp dc
+    // var x = 1
+    // var x = 2 => ok 
+    //     x = 3 => ok
+
+    // let khai bao trung lăp k dc/
+    // let x = 1
+    //     x = 2 => ok
+    // let x = 3 => bien nay da ton tai
+
+    // const: khai báo biên cố đinh
+    // const x = 1 
+    //       x = 2 or const x = 2 => bien nay k dc thay doi 
+
+
+    // 1 số kiểu dữ liệu chung cho các ngôn ngữ: số, chuỗi, mang, object, số thực, boolean.. 
+    // - số (int): 4242
+    // - chuỗi (string): " la 1 doan text o trong dấu nhay"
+
+    // khai bao 1 số
+    // let x = 1;
+    // let name = "baovic";
+
+    
+
+    // let a = 1 
+    // let b = 2 
+    // tong = 10
+
+    // alert("hien thi thông báo len màn hinh")
+    // console.log(tong)
+
+    // chú y số và biến k dc đặt trong dấu nháy vi se trở thành chuỗi
+
+    // console.log("name")
+    // console.log(name)
+
+    // 1 số biêu thuc dung trong if else 
+    // ==, !=, && ||, >, >=, <, <= ,* , / , %
+
+
+    // if(tong % 2 == 0){
+    //   alert("dayla so chan")
+    // }else{
+    //   alert("day la so le")
+    // }
+
+    // if else lông nhau
+    // cho 1 số bât ky , viet code kiem tra
+    // - nêu so nay > 100 thi kiem tra xem nó la so chẵn hay le
+    // - nêu so nay < 100 thi kiem tra xem nó la so chẵn hay le
+
+    // let n = 53
+    // if(n > 100){
+
+    //   if(n % 2 == 0){
+        // alert("day la so chan > 100")
+    //   }else{
+        // alert("day la so le > 100")
+    //   }
+
+    // }else{
+
+    //   if(n % 2 == 0){
+        // alert("day la so chan < 100")
+    //   }else{
+        // alert("day la so le < 100")
+    //   }
+    // }
+    // cho 3 số tự nhiên tim số max
+    // let a = 1
+    // let b = 2 
+    // let c = 4
+
+    // if(a > b && a >c){
+
+    //   alert(a + "so lơn nhat")
+
+    // }else if(b > a && b > c){
+
+    //   alert(b + "so lơn nhat")
+    // }else{
+    //   alert(c + "so lơn nhat")
+    //}
+
+    // let mau="bac"
+    // if(mau=="xanh"){
+    //     console.log("Day la mau xanh");
+    // } else if(mau=="do"){
+    //     console.log("Day la mau do");
+    // } else if(mau=="vang"){
+    //     console.log("Day la mau vang");
+    // } else console.log("Cac mau khac");
+
+    // let namchanle="2026"
+    // if(namchanle%2!=0){
+    //     console.log("nam le");
+    // } else console.log("nam chan");
+
+    // let namnhuan="2026"
+    // if((namnhuan&100!=0&&namnhuan%4==0)||(namnhuan&100!=0&&namnhuan%400==0)){
+    //     console.log("nam nhuan")
+    // } else console.log("nam khong nhuan")
+
+    // let so="3"
+    // if(so%2==0){
+    //     if(so>100){
+    //         console.log("So chan va lon hon 100");
+    //     } else console.log("So chan va nho hon 100");
+    // } else {
+    //     if(so>100){
+    //         console.log("So le va lon hon 100");
+    //     } else console.log("So le va nho hon 100");
+    // }
+
+    // let nam="2026"
+    // if(nam<1900){
+    //     console.log("the ky18")
+    // } else if(nam>=1900&&nam<=1999){
+    //     console.log("the ky19")
+    // } else if(nam>=2000&&nam<=2099){
+    //     console.log("the ky20")
+    // } else if(nam>=2100){
+    //     console.log("the ky21")
+    // }
+    
+    // let x1=5
+    // let x2=8
+    // let x3=8
+    // if(x1==1||x2==1||x3==1){
+    //     console.log("Loai")
+    // } else if(x1<5||x2<5||x3<5){
+    //     console.log("Yeu")
+    // } else if(x1>=5&&x1!=1&&x2>=5&&x2!=1&&x2>=5&&x2!=1){
+    //     let tbc=(x1+x2+x3)/3
+    //     if(tbc>=0&&tbc<7){
+    //         console.log("trung binh")
+    //     } else if(tbc>=7&&tbc<=8){
+    //         console.log("kha")
+    //     } else if(tbc>8&&tbc<=10){
+    //         console.log("gioi")
+    //     }
+    // }
+
+    console.log("In ra cac so 1-10:");
+    for(let i=1;i<11;i++){
+        console.log(i);
+    }
+
+    console.log("In ra cac so le 1-10:");
+    for(let i=1;i<11;i++){
+        if(i%2!=0){
+            console.log(i);
+        }
+    }
+
+    console.log("In ra cac so le 1-10 va <5 :");
+    for(let i=1;i<11;i++){
+        if(i<5){
+            console.log(i);
+        }
+    }
+
+    console.log("In ra cac so le 1-10 va in so 6:");
+    for(let i=1;i<11;i++){
+        if(i=6){
+            console.log(i);
+            break;
+        }
+    }
+
+    console.log("Tinh tong 1-10:");
+    var tong=0;
+    for(let i=1;i<11;i++){
+        tong+=i;
+    }
+    console.log(tong);
+
+    console.log("Tinh tong s = 1 + 1/n:");
+    let n=5;
+    var tong=0;
+    for(let i=0;i<=n;i++){
+        tong=1+1/n;
+    }
+    console.log(tong);
+
+    console.log("Tim so lon nhat cua 3 so");
+    let x1=15;
+    let x2=9;
+    let x3=10;
+    if(x1>x2&&x1>x3){
+        console.log("x1="+x1+" la so lon nhat");
+    } else if( x2>x3){
+        console.log("x2="+x2+" la so lon nhat");
+    } else console.log("x3="+x3+" la so lon nhat");
+
+    </script>
+</body>
+</html>
