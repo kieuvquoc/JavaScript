@@ -4,9 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+    h1{
+      background-color: red;
+    }
+    .active {
+      background-color: blue;
+    }
+  </style>
 </head>
 <body>
-    <h4>1.In ra cac so 1-10:</h4>
+    <!-- <h4>1.In ra cac so 1-10:</h4>
     <button onclick="bai1()">1</button>
     <h4>2.In ra cac so le 1-10:</h4>
     <button onclick="bai2()">2</button>
@@ -19,8 +27,188 @@
     <h4>6.Tinh tong s = 1 + 1/n:</h4>
     <button onclick="bai6()">6</button>
     <h4>7.Tim so lon nhat cua 3 so</h4>
-    <button onclick="bai7()">7</button>
+    <button onclick="bai7()">7</button> -->
+
+
+    <!-- onclick: có thể dùng cho tất cả các the html -->
+
+  <h1 id="box">1 số hàm trong javasscript</h1>
+
+  <button onclick="hamHide()">hide</button>
+
+  <button onclick="hamShow()">show</button>
+
+  <button onclick="hamAddClass()">add class active</button>
+
+  <button onclick="hamRemoveClass()">xoa class active</button>
+
+  <button id="abc" onclick="hamHasClass()">kiem tra class active</button>
+
+  <ul>
+    <li class="xx">menu1</li>
+    <li class="yy">menu1</li>
+    <li class="zz">menu1</li>
+    <li>menu1</li>
+  </ul>
+  <span id="BT1">BAITAP 1</span>
+  <span id="BT2">BAITAP 2</span>
+  <ul>
+    <li id="3x">aasd</li>
+    <li id="3y">asdasd</li>
+    <li id="3z">asdasdasdasd</li>
+    <li id="3o">asdasdasdasdasd</li>
+  </ul>
+<!-- click vao Li nao thi them mau(class) cho li do -->
+  
+  <!-- <p class="xxx">click vao the p</p> -->
     <script>
+        // sư kiện: là hành động tác động vào thẻ html : click, hover,change... 
+
+    // document: chi tới trang html
+    // getElementById: chỉ tới the html có id
+
+    // const theH1 = document.getElementById("box")/
+
+    function hamHide(){
+
+  
+      document.getElementById("box").style.display = "none"; // ẩn di
+    }
+
+    function hamShow(){
+      document.getElementById("box").style.display = "block"; //hien thi ra
+    }
+
+    function hamAddClass(){
+      document.getElementById("box").classList.add("active"); //them class active vao the html nay
+    }
+
+    function hamRemoveClass(){
+      document.getElementById("box").classList.remove("active"); //xoa class active vao the html nay
+    }
+
+    function hamHasClass(){
+      // classList.contains("active"): kiem tra class active co trong the html k?
+      // - co thi tra ve true 
+      // - k thi tra ve false
+        
+      let checkClass = document.getElementById("box").classList.contains("active");
+      
+      // alert(checkClass)
+// 
+      // neu co cvlass active trong the html co id=box
+        if (checkClass==true) {
+          // console.log("Có class active"); 
+          // p hide
+          // - xoa di
+          hamShow(); //hien thi ra
+          hamRemoveClass() //xoa active
+
+        }else{
+          // console.log("k co class active"); 
+          // -them class vao active
+          // p show
+
+          hamHide() // ân the h1 di
+          hamAddClass() //them class active vao
+        }
+    }
+   
+    // querySelector: chon 1 the html
+
+     // querySelectorAll: chon het tat the Li 
+    //let elements = document.querySelectorAll("li");
+
+    // chọn 1 the div co class abc
+    // let elements = document.querySelector("div.abc");
+
+      // duyệt qua từng the Li (for)
+      //elements.forEach(function(item){
+        
+        // item : mỗi the li, click li nao thi item chính li do
+
+        // addEventListener: lắng nghe sư kiện click
+        //item.addEventListener("click", function(){
+          //item.classList.add("active");
+        //})
+    //})
+
+    // function hamHienThi(){
+    //     document.getElementById("ktr").style.display="block";
+    // }
+    // function hamAn(){
+    //     document.getElementById("ktr").style.display="none";
+    // }
+    // function hamThemClass(){
+    //     document.getElementById("ktr").classList.add("active");
+    // }
+    // function hamXoaClass(){
+    //     document.getElementById("ktr").classList.remove("active");
+    // }
+    // function hamKTrClass1(){
+    //     let KTraClass = document.getElementById("ktr").classList.contains("active");
+    //     if(KTraClass==false){
+    //         hamThemClass();
+    //     } else hamXoaClass();
+    // }
+
+    // let elementSPAN1 = document.querySelectorAll("span")
+    let elementSPAN1 = document.getElementById("BT1")
+        elementSPAN1.addEventListener("click",function(){
+            let KTraClass = this.classList.contains("active");
+        if(KTraClass==false){
+            this.classList.add("active");
+        } else this.classList.remove("active");
+        })
+
+    // let elementSPAN2 = document.querySelectorAll("span")
+    let elementSPAN2 = document.getElementById("BT2")
+        elementSPAN2.addEventListener("click",function(){
+            let KtraClass = this.classList.contains("active");
+            if(KtraClass==false){
+                this.classList.add("active");
+                this.style.display="none";
+            } else {
+                this.classList.remove("active");
+                this.style.display="block";
+            }
+        })
+
+    let elementLI3 = document.querySelectorAll("li");
+        elementLI3.forEach(function(item){
+            item.addEventListener("click",function(){
+                let KTraClass = item.classList.contains("active")
+                if(KTraClass==false){
+                    item.classList.add("active")
+                } else item.classList.remove("active")
+            })
+        })
+      // querySelector: tim the html
+      // querySelectorAll: lay het cac the html giong nhau
+
+      // let theP = document.querySelector("p");
+
+      //  //let theP = document.getElementById("xxx")
+
+      // theP.addEventListener("click", function(){
+                      
+      //     // khi click lan dau, thi class active k co trong p 
+      //     let check = theP.classList.contains("active");
+
+      //     // neu check==true or check ton tai
+      //     if(check){
+            
+      //       theP.classList.remove("active")
+
+      //     }else{
+      //       // check = fasle hoạc k ton tai 
+      //       theP.classList.add("active")
+
+      //     }
+            
+          
+      // })
+      
         // khai bao 1 beien trong js thi có 3 cách: var, let, const
     // var : khai báo biến trung lặp dc
     // var x = 1
@@ -206,117 +394,117 @@
 
     
     
-    console.log("In ra cac so 1-10:");
-    for(let i=1;i<11;i++){
-        console.log(i);
-    }
-    function bai1(){
-        let chuoi="";
-        for(let i=1;i<11;i++){
-        chuoi+=i+" ";
-        }
-        alert(chuoi);
-    }
+    // console.log("In ra cac so 1-10:");
+    // for(let i=1;i<11;i++){
+    //     console.log(i);
+    // }
+    // function bai1(){
+    //     let chuoi="";
+    //     for(let i=1;i<11;i++){
+    //     chuoi+=i+" ";
+    //     }
+    //     alert(chuoi);
+    // }
 
-    console.log("In ra cac so le 1-10:");
-    for(let i=1;i<11;i++){
-        if(i%2!=0){
-            console.log(i);
-        }
-    }
-    function bai2(){
-        let chuoi="";
-        for(let i=1;i<11;i++){
-            if(i%2!=0){
-                chuoi+=i+" ";
-            }
-        }
-        alert(chuoi);
-    }
+    // console.log("In ra cac so le 1-10:");
+    // for(let i=1;i<11;i++){
+    //     if(i%2!=0){
+    //         console.log(i);
+    //     }
+    // }
+    // function bai2(){
+    //     let chuoi="";
+    //     for(let i=1;i<11;i++){
+    //         if(i%2!=0){
+    //             chuoi+=i+" ";
+    //         }
+    //     }
+    //     alert(chuoi);
+    // }
 
-    console.log("In ra cac so le 1-10 va <5 :");
-    for(let i=1;i<11;i++){
-        if(i<5){
-            console.log(i);
-        }
-    }
-    function bai3(){
-        let chuoi="";
-        for(let i=1;i<11;i++){
-            if(i<5){
-            chuoi+=i+" ";
-        }
-        }
-        alert(chuoi);
-    }
+    // console.log("In ra cac so le 1-10 va <5 :");
+    // for(let i=1;i<11;i++){
+    //     if(i<5){
+    //         console.log(i);
+    //     }
+    // }
+    // function bai3(){
+    //     let chuoi="";
+    //     for(let i=1;i<11;i++){
+    //         if(i<5){
+    //         chuoi+=i+" ";
+    //     }
+    //     }
+    //     alert(chuoi);
+    // }
 
-    console.log("In ra cac so le 1-10 va in so 6:");
-    for(let i=1;i<11;i++){
-        if(i=6){
-            console.log(i);
-            break;
-        }
-    }
-    function bai4(){
-        let chuoi="";
-        for(let i=1;i<11;i++){
-            if(i=6){
-            chuoi+=i+" ";
-            break;
-            }
-        }
-        alert(chuoi);
-    }
+    // console.log("In ra cac so le 1-10 va in so 6:");
+    // for(let i=1;i<11;i++){
+    //     if(i=6){
+    //         console.log(i);
+    //         break;
+    //     }
+    // }
+    // function bai4(){
+    //     let chuoi="";
+    //     for(let i=1;i<11;i++){
+    //         if(i=6){
+    //         chuoi+=i+" ";
+    //         break;
+    //         }
+    //     }
+    //     alert(chuoi);
+    // }
 
-    console.log("Tinh tong 1-10:");
-    var tong=0;
-    for(let i=1;i<11;i++){
-        tong+=i;
-    }
-    console.log(tong);
-    function bai5(){
-        let chuoi=0;
-        for(let i=1;i<11;i++){
-            chuoi+=i;
-        }
-        alert(chuoi);
-    }
+    // console.log("Tinh tong 1-10:");
+    // var tong=0;
+    // for(let i=1;i<11;i++){
+    //     tong+=i;
+    // }
+    // console.log(tong);
+    // function bai5(){
+    //     let chuoi=0;
+    //     for(let i=1;i<11;i++){
+    //         chuoi+=i;
+    //     }
+    //     alert(chuoi);
+    // }
 
-    console.log("Tinh tong s = 1 + 1/n:");
-    let n=5;
-    var tong=0;
-    for(let i=0;i<=n;i++){
-        tong=1+1/n;
-    }
-    console.log(tong);
-    function bai6(){
-        let n=5;
-        let chuoi=0;
-        for(let i=1;i<11;i++){
-            chuoi=1+1/n;
-        }
-        alert(chuoi);
-    }
+    // console.log("Tinh tong s = 1 + 1/n:");
+    // let n=5;
+    // var tong=0;
+    // for(let i=0;i<=n;i++){
+    //     tong=1+1/n;
+    // }
+    // console.log(tong);
+    // function bai6(){
+    //     let n=5;
+    //     let chuoi=0;
+    //     for(let i=1;i<11;i++){
+    //         chuoi=1+1/n;
+    //     }
+    //     alert(chuoi);
+    // }
 
-    console.log("Tim so lon nhat cua 3 so");
-    let x1=15;
-    let x2=9;
-    let x3=10;
-    if(x1>x2&&x1>x3){
-        console.log("x1="+x1+" la so lon nhat");
-    } else if( x2>x3){
-        console.log("x2="+x2+" la so lon nhat");
-    } else console.log("x3="+x3+" la so lon nhat");
-    function bai7(){
-        let x1=15;
-    let x2=9;
-    let x3=10;
-    if(x1>x2&&x1>x3){
-        alert("x1="+x1+" la so lon nhat");
-    } else if( x2>x3){
-        alert("x2="+x2+" la so lon nhat");
-    } else alert("x3="+x3+" la so lon nhat");
-    }
+    // console.log("Tim so lon nhat cua 3 so");
+    // let x1=15;
+    // let x2=9;
+    // let x3=10;
+    // if(x1>x2&&x1>x3){
+    //     console.log("x1="+x1+" la so lon nhat");
+    // } else if( x2>x3){
+    //     console.log("x2="+x2+" la so lon nhat");
+    // } else console.log("x3="+x3+" la so lon nhat");
+    // function bai7(){
+    //     let x1=15;
+    // let x2=9;
+    // let x3=10;
+    // if(x1>x2&&x1>x3){
+    //     alert("x1="+x1+" la so lon nhat");
+    // } else if( x2>x3){
+    //     alert("x2="+x2+" la so lon nhat");
+    // } else alert("x3="+x3+" la so lon nhat");
+    // }
     </script>
 </body>
 </html>
