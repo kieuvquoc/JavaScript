@@ -1,0 +1,147 @@
+  <!DOCTYPE html>
+  <html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+    </title>
+    <style>
+        *{
+            /* xoa css mac dinh  */
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            list-style: none;
+        }
+        .container {
+           width:500px;
+           height:500px; 
+        }
+        .row1{
+            width:100%;
+            height:80%;
+        }
+        .row1 img{
+            width:100%;
+            height:100%;
+        }
+        .row2 {
+            width:100%;
+            height:40%;
+            display:flex;
+        }
+        .row2 img{
+            width:20%;
+        }
+        
+    </style>
+  </head>
+  <body>
+    - hàm getAttribute: lấy gia tri thuoc tinh cua the html
+      <!-- cong thuc:  the-html.getAttribute("href) -->
+
+    - hàm setAttribute(): thêm hoặc thay đôi gia tri thuoc tinh
+      <!-- cong thuc:  the-html.setAttribute("ten thuoc tinh", "gia tri moi") -->
+
+      thuộc tinh: href, class, src, id
+      gia tri: bên trong thuoc tính (index.php, xx, images.png)
+
+      <!-- <a href="xx.html" id="abc" class="classAbc">hoc js</a>
+      <img  src="avatar.png" alt="avatar user" >
+
+      <img id="avatar"  alt="avatar user" src="https://cdn.24h.com.vn/upload/4-2024/images/2024-11-13//adt1731491622-1-61537-82-0-864-1251-crop-14794__anh_cat_3_2.jpeg" > -->
+
+
+    <!-- <img id="img1" src="https://ik.imagekit.io/tvlk/blog/2023/07/thap-eiffel-2-1024x683.jpg?tr=dpr-2,w-675" alt="">
+    <img id="img2" src="https://arihantlink.com/img/thailand/Thailand-temple.jpg" alt="">
+    <img id="img3" src="https://arihantlink.com/img/thailand/Thailand-temple.jpg" alt="">
+    <img id="img4" src="https://arihantlink.com/img/thailand/Thailand-temple.jpg" alt="">
+    <button id="btn" >Click me</button> -->
+
+    <div class="container">
+        <div class="row1">
+            <img id="chinh" src="https://tse1.mm.bing.net/th/id/OIP.wEnGhiVaItVrH6R1waqn7QHaHa?r=0&pid=Api&h=220&P=0" alt="">
+        </div>
+        <div class="row2">
+            <img src="https://ik.imagekit.io/tvlk/blog/2023/07/thap-eiffel-2-1024x683.jpg?tr=dpr-2,w-675" alt="">
+            <img src="https://tse2.mm.bing.net/th/id/OIP.S_wyTCzLzr39jQzmOtszeQHaHa?r=0&pid=Api&h=220&P=0" alt="">
+            <img src="https://png.pngtree.com/png-clipart/20221227/original/pngtree-cuba-flag-flying-image-png-image_8815510.png" alt="">
+            <img src="https://as2.ftcdn.net/v2/jpg/05/50/95/87/1000_F_550958748_OeGcRonEUNoVhd0wjd9zSEMhLFIGO9Bt.jpg" alt="">
+            <img src="https://cotcoinox.net/datafiles/setone/1577430411_quoc-ky-va-quoc-huy-cua-vuong-quoc-campuchia-gia-re.jpg" alt="">
+        </div>
+    </div>
+    <script>
+        let doianh=document.querySelectorAll("img");
+        let anhchinh = document.getElementById("chinh");
+        doianh.forEach(function(img){
+            img.addEventListener("click",function(){
+                phu=img.getAttribute("src");
+                chinh=anhchinh.getAttribute("src");
+                changechinh=anhchinh.setAttribute("src",phu);
+                changephu=img.setAttrib
+                
+            })
+        })
+
+        // let btnclick1= document.querySelectorAll("img")
+        // btnclick1.forEach(function(img){
+        //     img.addEventListener("click",function(){
+        //         x=img.getAttribute("src");
+        //         alert(x);
+        //     })
+        // })
+        
+      // ----------
+
+    //   const theButton = document.getElementById("btn");
+
+    //    theButton.addEventListener("click", function(){
+
+          // -----------------lấy ra-------
+        //   theA = document.getElementById("abc");
+        //   x = theA.getAttribute("class")
+        //   alert(x); 
+
+          // theA.setAttribute("href", "yy.html");
+           
+          // img1 = document.getElementById("avatar");
+          // yy = img1.getAttribute("src");
+          // alert(yy); 
+          
+          // alert(img.getAttribute("src")); 
+        
+          // -----------------thay đổi--------------
+         
+
+          // theA.setAttribute("class", "baovic");
+           
+          // img1.setAttribute("src", "hinh-dep-11.jpg");    
+           //
+       //})
+
+       
+    </script>
+
+   
+
+
+
+    <!-- <button class="myBtn">Click 1</button>
+    <button class="myBtn">Click 2</button>
+
+    <script>
+    let buttons = document.querySelectorAll(".myBtn");
+
+    // chay qua tầng the
+    buttons.forEach(function(btn) {
+
+      btn.addEventListener("click", function() {
+        // console.log(this); // Thẻ <button> đang click
+        this.style.backgroundColor = "orange"; // đổi màu nút vừa click
+      });
+      
+    });
+    </script> -->
+
+  </body>
+  </html>
