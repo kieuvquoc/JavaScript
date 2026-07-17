@@ -33,7 +33,21 @@
         .row2 img{
             width:20%;
         }
+
+        .hide {
+        display: none;
+        }
+        .show {
+        display: block;
+        }
         
+        ul li {
+        display: inline-block;
+        margin: 0 10px;
+        background-color: red;
+        text-transform: uppercase;
+        }
+
     </style>
   </head>
   <body>
@@ -58,7 +72,7 @@
     <img id="img4" src="https://arihantlink.com/img/thailand/Thailand-temple.jpg" alt="">
     <button id="btn" >Click me</button> -->
 
-    <div class="container">
+    <!-- <div class="container">
         <div class="row1">
             <img id="chinh" src="https://tse1.mm.bing.net/th/id/OIP.wEnGhiVaItVrH6R1waqn7QHaHa?r=0&pid=Api&h=220&P=0" alt="">
         </div>
@@ -69,19 +83,49 @@
             <img src="https://as2.ftcdn.net/v2/jpg/05/50/95/87/1000_F_550958748_OeGcRonEUNoVhd0wjd9zSEMhLFIGO9Bt.jpg" alt="">
             <img src="https://cotcoinox.net/datafiles/setone/1577430411_quoc-ky-va-quoc-huy-cua-vuong-quoc-campuchia-gia-re.jpg" alt="">
         </div>
+    </div> -->
+
+    <div class="content">
+        <ul>
+            <li>TIN TUC</li>
+            <li>bong da</li>
+            <li>thoi trang</li>
+        </ul>
+        <div class="hide">
+            <img src="https://inoxtandat.vn/uploads/news/2023_10/tin-tuc-niken-1610_1.jpg" >
+        </div>
+        <div class="hide">
+            <img src="https://images.wallpapersden.com/image/download/paul-pogba-hd-2021_bG1sZWaUmZqaraWkpJRmbmdlrWZlbWU.jpg" >
+        </div>
+        <div class="hide">
+            <img src="https://i.pinimg.com/originals/65/03/bc/6503bcdf0325d6c2c44fb35610fd38bd.jpg" >
+        </div>
+        </div>
     </div>
+
     <script>
-        let doianh=document.querySelectorAll("img");
-        let anhchinh = document.getElementById("chinh");
-        doianh.forEach(function(img){
-            img.addEventListener("click",function(){
-                phu=img.getAttribute("src");
-                chinh=anhchinh.getAttribute("src");
-                changechinh=anhchinh.setAttribute("src",phu);
-                changephu=img.setAttrib
-                
+        let showanh=document.querySelectorAll(".hide");
+        let duyetli=document.querySelectorAll("li");
+        duyetli.forEach(function(item, index){
+            item.addEventListener("click",function(){
+                showanh.forEach(function(anh){
+                    anh.style.display="none";
+                })
+                showanh[index].style.display="block";
             })
         })
+
+        // let doianh=document.querySelectorAll("img");
+        // let anhchinh = document.getElementById("chinh");
+        // doianh.forEach(function(img){
+        //     img.addEventListener("click",function(){
+        //         phu=img.getAttribute("src");
+        //         chinh=anhchinh.getAttribute("src");
+        //         changechinh=anhchinh.setAttribute("src",phu);
+        //         changephu=img.setAttrib
+                
+        //     })
+        // })
 
         // let btnclick1= document.querySelectorAll("img")
         // btnclick1.forEach(function(img){
