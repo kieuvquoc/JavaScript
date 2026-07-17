@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title></title>
+  <style>
+    li{
+      background-color: yellow;
+    }
+    li span{
+      background-color: pink;
+      display: none;
+    }
+    .active{
+      background-color: red;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+   <p>- click vao the Li nào thì show span con của Li đó ra</p>
+   <p>- tương tự trên nhưng hide the span cua Li khac di</p>
+   <p>- click vao Li nào đang có span hiện thi ra thi hide span do di </p>
+  <ul>
+    <li>
+      day la the Li
+      <span>day la the span</span>
+    </li>
+    <li>
+      day la the Li
+      <span>day la the span</span>
+    </li>
+    <li>
+      day la the Li
+      <span>day la the span</span>
+    </li>
+    <li>
+      day la the Li
+      <span>day la the span</span>
+    </li>
+  </ul>
+  <script>
+    let duyetLi=document.querySelectorAll("li");
+     duyetLi.forEach(function(click){
+        click.addEventListener("click",function(){
+            let checkContain=click.querySelector("span").classList.contains("active");
+
+            let cacSpanConLai=document.querySelectorAll("li span");
+            cacSpanConLai.forEach(function(s){
+                s.classList.remove("active");
+            })
+
+            if(checkContain==false)
+            click.querySelector("span").classList.add("active");
+        })
+     })
+
+     
+
+        
+  </script>
+</body>
+</html>
