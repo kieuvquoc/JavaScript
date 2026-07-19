@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            /* xoa css mac dinh  */
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            list-style: none;
+        }
+        .container {
+            width:350px;
+            margin:0 auto;
+        }
+        #form {
+            width:100%;
+            justify-content: center;
+        }
+        .form-header{
+            background-color: green;
+        }
+        .form-header h2{
+            text-transform: uppercase;
+        }
+        .row1{
+            width:100%;
+            margin:10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .col-l{
+            width:30%;
+        }
+        .col-r{
+            width:70%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <form id="form" action="https://github.com/kieuvquoc/kieuvquoc">
+            <div class="form-header">
+                <h2 style="text-align: center;">góp ý -  liên hệ với 24h</h2>
+            </div>
+            <div class="form-body">
+                <div class="row1">
+                    <div class="col-l">
+                        <label >Ho va ten</label>
+                    </div>
+                    <div class="col-r">
+                        <input type="text" id="ten"/>
+                    </div>
+                    <small id="ten_error"></small>
+                </div>
+                <div class="row1">
+                    <div class="col-l">
+                        <label >Email</label>
+                    </div>
+                    <div class="col-r">
+                        <input type="text" id="mail"/>
+                    </div>
+                    <small id="mail_error"></small>
+                </div>
+                <div class="row1">
+                    <div class="col-l">
+                        <label >SDT</label>
+                    </div>
+                    <div class="col-r">
+                        <input type="text" id="sdt"/>
+                    </div>
+                    <small id="sdt_error"></small>
+                </div>
+                <div class="row1">
+                    <div class="col-l">
+                        <label >Dia chi</label>
+                    </div>
+                    <div class="col-r">
+                        <input type="text" id="diachi"/>
+                    </div>
+                    <small id="diachi_error"></small>
+                </div>
+                <div class="row1">
+                    <div class="col-l">
+                        <label >Tieu de</label>
+                    </div>
+                    <div class="col-r">
+                        <input type="text" id="tieude"/>
+                    </div>
+                    <small id="tieude_error"></small>
+                </div>
+                <div class="row1">
+                    <div class="col-l">
+                        <label> Noi dung</label>
+                    </div>
+                    <div class="col-r">
+                        <textarea id="noidung"></textarea>
+                    </div>
+                    <small id="noidung_error"></small>
+                </div>
+                <div class="row1">
+                    <button type="submit" style="background-color: green; margin-right: 10px; font-size: larger;">Gui</button>
+                    <button style="font-size: larger;">Thoat</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+<script>
+    let form=document.getElementById("form");
+
+    let ten=document.getElementById("ten");
+    let ten_error=document.getElementById("ten_error");
+
+    let mail=document.getElementById("mail");
+    let mail_error=document.getElementById("mail_error");
+
+    let sdt=document.getElementById("sdt");
+    let sdt_error=document.getElementById("sdt_error");
+
+    let diachi=document.getElementById("diachi");
+    let diachi_error=document.getElementById("diachi_error");
+
+    let tieude=document.getElementById("tieude");
+    let tieude_error=document.getElementById("tieude_error");
+
+    let noidung=document.getElementById("noidung");
+    let noidung_error=document.getElementById("noidung_error");
+
+    form.addEventListener("submit",function(e){
+        e.preventDefault();
+
+        let teninput = ten.value.trim();
+        let mailinput = mail.value.trim();
+        let sdtinput = sdt.value.trim();
+        let diachiinput = diachi.value.trim();
+        let tieudeinput = tieude.value.trim();
+        let noidunginput = noidung.value.trim();
+
+        if(teninput == ""){
+            ten_error.textContent="Ten khong duoc de trong";
+        }
+        else ten_error.textContent="";
+        if(mailinput == ""){
+            mail_error.textContent="Mail khong duoc de trong";
+        }
+        else mail_error.textContent="";
+        if(sdtinput==""){
+                sdt_error.textContent="sdt khong duoc de trong";
+            }
+        else sdt_error.textContent="";
+        if(diachiinput == ""){
+            diachi_error.textContent="diachi khong duoc de trong";
+        }
+        else diachi_error.textContent="";
+        if(tieudeinput == ""){
+            tieude_error.textContent="tieude khong duoc de trong";
+        }
+        else tieude_error.textContent="";
+        if(noidunginput == ""){
+            noidung_error.textContent="noidung khong duoc de trong";
+        }
+        else noidung_error.textContent="";
+
+        if(teninput != ""&&mailinput != ""&&sdtinput!=""&&diachiinput != ""
+        &&tieudeinput != ""&&noidunginput != ""){
+            alert("Thanh cong");
+            form.submit();
+        }
+    })
+</script>
+</html>
