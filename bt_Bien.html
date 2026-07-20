@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            /* xoa css mac dinh  */
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            list-style: none;
+        }
+        .container{
+            width:500px;
+            margin: 0 auto;
+            display:flex;
+        }
+        #form-left{
+            float:left;
+            width:50%;
+            margin-right:10px;
+            border:1px solid gray;
+            background-color: aquamarine;
+        }
+        #form-right{
+            float:right;
+            width:50%;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <form id="form-left">
+            <div class="row1">
+                <label for="">Email</label>
+                <input id="mail" type="text">
+                <small id="mail_error"></small>
+            </div>
+            <div class="row2">
+                <label for="">Pass</label>
+                <input id="pass" type="text">
+                <small id="pass_error"></small>
+            </div>
+            <div class="row3">
+                <button type="submit">submit ne</button>
+            </div>
+        </form>
+        <form id="form-right">
+            <button type="submit">alert</button>
+        </form>
+    </div>
+</body>
+<script>
+    let mail=document.getElementById("mail");
+    let mail_error=document.getElementById("mail_error");
+
+    let pass=document.getElementById("pass");
+    let pass_error=document.getElementById("pass_error");
+
+    let form_left =document.getElementById("form-left");
+    let form_right=document.getElementById("form-right");
+
+    let mailTong="";
+    let passTong="";
+
+    form_left.addEventListener("submit",function(e){
+        e.preventDefault();
+
+        let mailINPUT = mail.value.trim();
+        let passINPUT = pass.value.trim();
+
+        kiemtra = true;
+
+        if(mailINPUT==""){
+            mail_error.textContent="Khong bo trong truong mail";
+            kiemtra=false;
+        } else 
+        { 
+            mail_error.textContent="";
+        }
+        if(passINPUT==""){
+            let passAlert = pass_error.textContent="Khong bo trong truong pass";
+            kiemtra=false;
+        } else 
+        {
+            pass_error.textContent="";
+        }
+        if(kiemtra==true){
+            alert("Thanh cong");
+            mailTong=mailINPUT;
+            passTong=passINPUT;
+        }
+    })
+    form_right.addEventListener("submit",function(e){
+        e.preventDefault();
+
+        alert("Email: " + mailTong + " - Pass: " + passTong);
+    })
+    
+</script>
+</html>
