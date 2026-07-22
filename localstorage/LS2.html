@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var getBT1=localStorage.getItem("Bai1");
+        
+        if(getBT1){
+                console.log(getBT1);
+                getBT2=JSON.parse(getBT1);
+                console.log(getBT2);
+        }
+        arr2=[];
+        getBT2.map(function(value,key){
+            if(key==9) console.log(value);    
+        })
+        getBT2.map(function(value,key){
+            if(key<=5){
+                arr2.push(key);
+            }
+        })
+        console.log("map:"+arr2);
+        //let chuyenString1=JSON.stringify(arr2);
+        localStorage.setItem("bt2 map",arr2);
+
+        arr3=[];
+        getBT2.filter(function(value){
+            if(value<=5)
+            arr3.push(value);
+        })
+        console.log("filter:"+arr3);
+        localStorage.setItem("bt2 filter", arr3);
+
+    </script>
+</body>
+</html>

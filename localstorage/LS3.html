@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var getBT1=localStorage.getItem("Bai1");
+
+        if(getBT1){
+            console.log(getBT1);
+            BT3=JSON.parse(getBT1);
+            console.log(BT3);
+        }
+
+        arr3=[];
+        for(var i=0;i<=20;i++){
+            arr3.push(i);
+        }
+        console.log(arr3);
+
+        arr4=[];
+        arr3.filter(function(value){
+            if(value>=11&&value<=20)
+                arr4.push(value);
+        })
+        console.log(arr4);
+
+        let Merge2arr=BT3.concat(arr4);
+        console.log(Merge2arr);
+
+        s=0;
+        for(var i=0;i<=Merge2arr.length;i++){
+            s+=i;
+        }
+        console.log(s);
+    </script>
+</body>
+</html>
