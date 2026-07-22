@@ -160,18 +160,21 @@
 				  		<option value="black">Black</option>
 				  		<option value="blue">Blue</option>
 			  		</select>
+					<p class="color_error"></p>
 			  		<select class="size">
 				  		<option value="">Select Size</option>
 				  		<option value="m">M</option>
 				  		<option value="s">S</option>
 				  		<option value="l">L</option>
 			  		</select>
+					<p class="size_error"></p>
 			  		<select class="amount">
 				  		<option class="amount" value="1">1</option>
 				  		<option class="amount" value="2">2</option>
 				  		<option class="amount" value="3">3</option>
 				  		<option class="amount" value="4">4</option>
 			  		</select>
+					<p class="amount_error"></p>
 			  		<button class="buy" id="add">ADD TO CART</button>
 			  		<button class="buy" id="remove">REMOVE TO CART</button>
 			  		<p class="compare"><img class="compare" src="img/arrow.png"> <span class="compare">ADD TO COMPARE</span></p>
@@ -276,4 +279,70 @@
 		</div>
 	</div> 
 </body>
+<script>
+	let choose=document.querySelector(".choose");
+
+	let tong=0;
+
+	let giohang=document.querySelector(".empty");
+
+	let color = document.querySelector(".color");
+	let color_error = document.querySelector(".color_error");
+
+	let size = document.querySelector(".size");
+	let size_error = document.querySelector(".size_error");
+	
+	let amount = document.querySelector(".amount");
+	let amount_error = document.querySelector(".amount_error");
+
+	let btnADD = document.getElementById("add");
+	let btnRM = document.getElementById("remove");
+
+	btnADD.addEventListener("click",function(e){
+		e.preventDefault();
+
+		let kiemtra=true;
+
+		let colorINPUT = color.value;
+		let sizeINPUT = size.value;
+		let amountINPUT = Number(amount.value);
+		
+		if(colorINPUT==""){
+			color_error.textContent="Chua chon mau";
+			kiemtra=false;
+		} else color_error.textContent="";
+
+		if(sizeINPUT==""){
+			size_error.textContent="Chua chon size";
+			kiemtra=false;
+		} else size_error.textContent="";
+
+		if(amountINPUT==""){
+			amount_error.textContent="Chua chon so luong";
+			kiemtra=false;
+		} else amount_error.textContent="";
+
+		if(kiemtra){
+			tong+=amountINPUT;
+			giohang.textContent=tong;
+			alert("Them thanh cong");
+		}
+	})
+
+	btnRM.addEventListener("click",function(e){
+		e.preventDefault();
+
+		let amountINPUT = Number(amount.value);
+		if(tong==0){
+			alert("Khong co san pham trong gio");
+		} 
+		if(tong<amountINPUT){
+			alert("So luong phai xoa lon hon gioi hang");
+		}
+		if(tong>=amountINPUT){
+			tong-=amountINPUT;
+			giohang.textContent=tong;
+		}
+	})
+</script>	
 </html>
