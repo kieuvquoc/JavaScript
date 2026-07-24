@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let arr = [
+            {id:'john', name: "John Smith", age: 20},
+            {id:'ann', name: "Ann Smith", age: 24},
+            {id:'pete', name: "Pete Smith", age: 31},
+        ]
+        user= []
+        arr.map(function(value){
+            user.push(value['id'])
+        })
+        console.log(user);
+
+        obj={}
+        arr.map(function(value){
+            obj[value.id]=value
+        })
+        console.log(obj)
+
+        objCha={
+            'bao1':{
+                'xx':'baovic',
+                'yy':'baocic@gmail.com'
+            },
+            'bao2':{
+                'xx':'baovic2',
+                'yy':'baocic@gmail.com2'
+            },
+            'bao3':{
+                'xx':'baovic3',
+                'yy':'baocic@gmail.com3'
+            },
+            'bao4':{
+                'xx':'baovic4',
+                'yy':'baocic@gmail.com4'
+            }
+        }
+        Object.keys(objCha).map(function(key){
+            console.log(key+" - "+objCha[key].xx)
+        })
+
+    </script>
+</body>
+</html>
