@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let getLSBT5=localStorage.getItem("BT5")
+        let jsonParse=JSON.parse(getLSBT5)
+        console.log(jsonParse)
+
+        Object.keys(jsonParse).map(function(key){
+            if(key>0&&key<10) console.log(key);
+        })
+        
+        objBT5={}
+        for(let key in jsonParse){
+            let value = jsonParse[key];
+            if(value>5)
+            objBT5[key]=value;
+        }
+        console.log(objBT5)
+        let jsonString=JSON.stringify(objBT5)
+        localStorage.setItem("BT6", jsonString)
+    </script>
+</body>
+</html>

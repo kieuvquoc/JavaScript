@@ -21,11 +21,7 @@
         }
         console.log(arr3);
 
-        arr4=[];
-        arr3.filter(function(value){
-            if(value>=11&&value<=20)
-                arr4.push(value);
-        })
+        arr4=arr3.filter((value)=>(value>=11&&value<=20));
         console.log(arr4);
 
         let Merge2arr=BT3.concat(arr4);

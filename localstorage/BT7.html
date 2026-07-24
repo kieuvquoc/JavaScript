@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let getLSBT5 = localStorage.getItem("BT5")
+        let jsonParse=JSON.parse(getLSBT5)
+
+        objBT7={}
+        for(let i=11;i<21;i++){
+            objBT7[i]=i;
+        }
+
+        let mergeBT7={
+            ...jsonParse,
+            ...objBT7
+        }
+        console.log(mergeBT7)
+
+        tong=0;
+        for(let i=0;i<=Object.keys(mergeBT7).length;i++){
+            tong+=i;
+        }
+        console.log(tong);
+    </script>
+</body>
+</html>

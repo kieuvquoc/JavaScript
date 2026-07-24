@@ -27,11 +27,7 @@
         //let chuyenString1=JSON.stringify(arr2);
         localStorage.setItem("bt2 map",arr2);
 
-        arr3=[];
-        getBT2.filter(function(value){
-            if(value<=5)
-            arr3.push(value);
-        })
+        arr3= getBT2.filter((value)=> value<=5);
         console.log("filter:"+arr3);
         localStorage.setItem("bt2 filter", arr3);
 

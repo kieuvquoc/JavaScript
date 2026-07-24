@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        objBT5=[]
+        for(let i=0;i<=10;i++){
+            objBT5[i]=i;
+        }
+        console.log(objBT5);
+        let jsonString=JSON.stringify(objBT5)
+        localStorage.setItem("BT5",jsonString)
+    </script>
+</body>
+</html>

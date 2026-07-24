@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let getLSBT1=localStorage.getItem("BT1");
+        let jsonParse=JSON.parse(getLSBT1);
+
+        Object.values(jsonParse).map(function(value,index){
+            console.log("index:"+index+" ,value:"+value);
+
+        })
+
+        let mang1=[
+            baovic="Bảo Vic",
+            daycode="Dạy code"    
+        ]
+        jsonParse['new']=mang1;
+        let jsonString=JSON.stringify(jsonParse)
+        localStorage.setItem("BT2",jsonString)
+    </script>
+</body>
+</html>

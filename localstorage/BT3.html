@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let getLSBT2=localStorage.getItem("BT2")
+        let jsonParse=JSON.parse(getLSBT2)
+
+        let keyXoa="kieu"
+        Object.keys(jsonParse).map(function(key){
+            console.log("key:"+key+" value:"+jsonParse[key])
+            if(keyXoa!=null){
+                if(keyXoa==key){
+                    delete jsonParse[key];
+                }
+            }
+        })
+        console.log(jsonParse)
+        let jsonString=JSON.stringify(jsonParse)
+        localStorage.setItem("BT3",jsonString)
+    </script>
+</body>
+</html>
