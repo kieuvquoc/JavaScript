@@ -23,6 +23,8 @@
             obj[value.id]=value
         })
         console.log(obj)
+        jsonString=JSON.stringify(obj);
+        localStorage.setItem("objload",jsonString);
 
         objCha={
             'bao1':{

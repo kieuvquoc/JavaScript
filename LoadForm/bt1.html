@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table,th,td {
+            border:1px solid gray;
+        }
+    </style>
+</head>
+<body>
+    <table style="width:100%" >
+        <thead>
+            <tr>
+                <td>username</td>
+                <td>Email</td>
+            </tr>
+        </thead>
+        <tbody id="table1-tbody">
+
+        </tbody>
+    </table>
+    <table style="width:100%">
+        <thead>
+            <tr>
+                <td>id</td>
+                <td>name</td>
+                <td>age</td>
+            </tr>
+        </thead>
+        <tbody id="table2-tbody">
+
+        </tbody>
+    </table>
+</body>
+<script>
+    let setTable1=localStorage.getItem("FormOBJ");
+    let jsonParse1=JSON.parse(setTable1);
+    console.log(jsonParse1);
+
+    let setTable2=localStorage.getItem("objload");
+    let jsonParse2=JSON.parse(setTable2);
+    console.log(jsonParse2);
+
+    table1=document.getElementById("table1-tbody");
+    table1.innerHTML=Object.values(jsonParse1).map(value=>
+        `
+            <tr>
+                <th>${value.xx}</th>
+                <th>${value.yy}</th>
+            </tr>
+        `
+    ).join("");
+
+    table2=document.getElementById("table2-tbody");
+    table2.innerHTML=Object.values(jsonParse2).map(value=>{
+        return `
+            <tr>
+                <th>${value.id}</th>
+                <th>${value.name}</th>
+                <th>${value.age}</th>
+            </tr>
+        `;
+    }).join("");
+
+</script>
+</html>
