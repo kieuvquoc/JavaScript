@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            /* xoa css mac dinh  */
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            list-style: none;
+        }
+        .container {
+            width: 350px;
+            margin: 20px auto;
+            font-family: Arial, sans-serif;
+        }
+        #form {
+            width: 100%;
+        }
+        .form-header {
+            background-color: green;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+        .form-header h2 {
+            text-transform: uppercase;
+        }
+        .row1 {
+            width: 100%;
+            margin-bottom: 15px;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        .col-l {
+            width: 30%;
+        }
+        .col-r {
+            width: 70%;
+        }
+        .col-r input {
+            width: 100%;
+            padding: 5px;
+        }
+        small {
+            color: red;
+            width: 100%;
+            margin-left: 30%;
+            margin-top: 4px;
+            font-size: 12px;
+        }
+        .btn-group {
+            justify-content: center;
+        }
+        button {
+            padding: 5px 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <form id="form">
+            <div class="form-body">
+                <div class="row1">
+                    <div class="col-l">
+                        <label >Email</label>
+                    </div>
+                    <div class="col-r">
+                        <input type="text" id="mail"/>
+                    </div>
+                    <small id="mail_error"></small>
+                </div>
+                <div class="row1">
+                    <div class="col-l">
+                        <label >Username</label>
+                    </div>
+                    <div class="col-r">
+                        <input type="text" id="ten"/>
+                    </div>
+                    <small id="ten_error"></small>
+                </div>
+                <div class="row1">
+                    <button type="submit" style="background-color: green; margin-right: 10px; font-size: larger;">Gui</button>
+                    <button style="font-size: larger;">Thoat</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+<script>
+    var form = document.getElementById("form");
+
+    var mail=document.getElementById("mail");
+    var mail_error=document.getElementById("mail_error");
+
+    var ten=document.getElementById("ten");
+    var ten_error=document.getElementById("ten_error");
+
+    var getLS=localStorage.getItem("FormOBJ");
+    objcha={}||JSON.parse(getLS);
+    objcon={}
+    form.addEventListener("submit",function(e){
+        e.preventDefault();
+
+        mailINPUT=mail.value.trim();
+        tenINPUT=ten.value.trim();
+
+        ktra = true;
+
+        if(mailINPUT==""){
+            mail_error.textContent="Mail khong duoc de trong";
+            ktra=false
+        } else mail_error.textContent="";
+
+        if(tenINPUT==""){
+            ten_error.textContent="Username khong duoc de trong";
+            ktra=false
+        } else ten_error.textContent="";
+
+        if(ktra==true){
+            objcon['xx']=tenINPUT;
+            objcon['yy']=mailINPUT;
+            objcha[tenINPUT]=objcon;
+            jsonStr=JSON.stringify(objcha);
+            localStorage.setItem("FormOBJ",jsonStr);
+            console.log(objcon);
+            console.log(objcha);
+            alert("gui thanh cong");
+            tenINPUT="";
+            mailINPUT="";
+        }
+    })
+</script>
+</html>
