@@ -89,7 +89,7 @@
 								<li><a href=""><i class="fa fa-user"></i> Account</a></li>
 								<li><a href=""><i class="fa fa-star"></i> Wishlist</a></li>
 								<li><a href="checkout.html"><i class="fa fa-crosshairs"></i> Checkout</a></li>
-								<li><a href="cart.html"><i class="fa fa-shopping-cart"></i> Cart</a></li>
+								<li><a href="cart.html"><i class="fa fa-shopping-cart" style="color: red;"></i> Cart</a></li>
 								<li><a href="login.html"><i class="fa fa-lock"></i> Login</a></li>
 							</ul>
 						</div>
@@ -309,10 +309,10 @@
 				<div class="col-sm-6">
 					<div class="total_area">
 						<ul>
-							<li>Cart Sub Total <span>$59</span></li>
-							<li>Eco Tax <span>$2</span></li>
-							<li>Shipping Cost <span>Free</span></li>
-							<li>Total <span>$61</span></li>
+							<li class="li1">Cart Sub Total <span>$59</span></li>
+							<li class="li2">Eco Tax <span>$2</span></li>
+							<li class="li3">Shipping Cost <span>Free</span></li>
+							<li class="li4">Total <span>$61</span></li>
 						</ul>
 							<a class="btn btn-default update" href="">Update</a>
 							<a class="btn btn-default check_out" href="">Check Out</a>
@@ -488,6 +488,8 @@
 		let jsonParse=JSON.parse(getLC);
 		console.log(jsonParse);
 
+		let giohang=document.querySelector(".fa-shopping-cart");
+
 		let tbody=document.getElementById("table-tbody");
 		tbody.innerHTML=Object.entries(jsonParse).map(function([id, value]){
 
@@ -509,9 +511,9 @@
 							</td>
 							<td class="cart_quantity">
 								<div class="cart_quantity_button">
-									<a class="cart_quantity_up"></a>
+									<a class="cart_quantity_up">+</a>
 									<input class="cart_quantity_input" type="text" name="quantity" value="${Number(value.qty)}" autocomplete="off" size="2">
-									<a class="cart_quantity_down"></a>
+									<a class="cart_quantity_down">-</a>
 								</div>
 							</td>
 							<td class="cart_total">
@@ -523,6 +525,8 @@
 						</tr>
 			`;		
 		}).join("");
+
+		let totalarea=0;
 
 		tbody.addEventListener("click",function(e){
 			e.preventDefault();
@@ -537,17 +541,22 @@
 			let qtyinput=Number(input.value);
 
 			let btnthem=e.target.closest(".cart_quantity_up");
-				if(btnthem){
+			let btngiam=e.target.closest(".cart_quantity_down");
+			let btnxoa = e.target.closest(".cart_quantity_delete");
+		
+			if(btnthem){
 					let newQty=qtyinput+1;
 					input.value=newQty;
 					cardtotal.innerText = "$" + (newQty * price_dola);
 
 					jsonParse[id].qty=newQty;
+
 					let jsonString=JSON.stringify(jsonParse);
 					localStorage.setItem("indexproduct", jsonString);
+					updateCartBadge();
+					loadTotalArea();
 			}
-			let btngiam=e.target.closest(".cart_quantity_down");
-				if(btngiam){
+			else if(btngiam){
 					if(qtyinput<=1){
 						alert("Khong the xoa duoc nua");
 					}
@@ -555,19 +564,66 @@
 						let newQty=qtyinput-1;
 						input.value=newQty;
 						cardtotal.innerText = "$" + (newQty * price_dola);
-						
+
 						jsonParse[id].qty=newQty;
+
 						let jsonString=JSON.stringify(jsonParse);
 						localStorage.setItem("indexproduct", jsonString);
+						updateCartBadge();
+						loadTotalArea();
 					}
 				}
-			let btnxoa = e.target.closest(".cart_quantity_delete");
-				if(btnxoa){
+			else if(btnxoa){
 					delete jsonParse[id];
 					localStorage.setItem("indexproduct", JSON.stringify(jsonParse));
       				tr.remove();
+
+					updateCartBadge();
+					loadTotalArea();
 				}
+			});
+		function loadTotalArea(){
+			let TongTotal=0;
+			Object.values(jsonParse).forEach(item=>{
+				let bodola=Number(String(item.price).replace(/[$]+/g,""));
+				let qty=Number(item.qty)
+				TongTotal+=bodola*qty;
 			})
+
+			let ul=document.querySelector(".total_area ul");
+			if (!ul) return;
+
+			let li1=ul.querySelector(".li1 span")
+			let li2=2;
+
+			let li3=ul.querySelector('.li3 span').textContent.trim().toLowerCase();
+			if(li3=="free"){
+				li3=0;
+			}
+			else li3=Number(li3.replace(/[^0-9.-]+/g, ""));
+
+			let li4 = ul.querySelector(".li4 span");
+			let Tinhli4=0;
+			if(TongTotal>0) Tinhli4=TongTotal+li2-li3;
+			else li4=0;
+
+			li1.textContent="$"+TongTotal
+			li4.textContent="$"+Tinhli4;
+		}
+
+		function updateCartBadge() {
+			if (!giohang) return;
+			let totalQty = 0;
+			Object.values(jsonParse).map(function(item){
+				totalQty+=item.qty;
+			giohang.textContent = totalQty;
+		})
+	}
+
+		loadTotalArea();
+		updateCartBadge();
+
+
 	</script>
 </body>
 </html>
