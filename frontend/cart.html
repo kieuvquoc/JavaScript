@@ -491,6 +491,7 @@
 		let giohang=document.querySelector(".fa-shopping-cart");
 
 		let tbody=document.getElementById("table-tbody");
+
 		tbody.innerHTML=Object.entries(jsonParse).map(function([id, value]){
 
 			let bodola=Number(String(value.price).replace(/[$]+/g,""));
@@ -526,35 +527,24 @@
 			`;		
 		}).join("");
 
-		let totalarea=0;
-
 		tbody.addEventListener("click",function(e){
 			e.preventDefault();
 
 			let tr = e.target.closest("tr");
 
 			let id = tr.getAttribute("data-id");
-			let input = tr.querySelector(".cart_quantity_input");
-			let cardtotal=tr.querySelector(".cart_total_price");
 
-			let price_dola=Number(tr.querySelector(".price_dola").textContent);
+			let input = tr.querySelector(".cart_quantity_input");
 			let qtyinput=Number(input.value);
 
 			let btnthem=e.target.closest(".cart_quantity_up");
 			let btngiam=e.target.closest(".cart_quantity_down");
 			let btnxoa = e.target.closest(".cart_quantity_delete");
-		
+
 			if(btnthem){
 					let newQty=qtyinput+1;
-					input.value=newQty;
-					cardtotal.innerText = "$" + (newQty * price_dola);
-
-					jsonParse[id].qty=newQty;
-
-					let jsonString=JSON.stringify(jsonParse);
-					localStorage.setItem("indexproduct", jsonString);
-					updateCartBadge();
-					loadTotalArea();
+					capnhatTBODY(tr, id, newQty);
+					luuJson();
 			}
 			else if(btngiam){
 					if(qtyinput<=1){
@@ -562,26 +552,38 @@
 					}
 					else{
 						let newQty=qtyinput-1;
-						input.value=newQty;
-						cardtotal.innerText = "$" + (newQty * price_dola);
-
-						jsonParse[id].qty=newQty;
-
-						let jsonString=JSON.stringify(jsonParse);
-						localStorage.setItem("indexproduct", jsonString);
-						updateCartBadge();
-						loadTotalArea();
+						capnhatTBODY(tr, id, newQty);
 					}
+					luuJson();
 				}
 			else if(btnxoa){
 					delete jsonParse[id];
-					localStorage.setItem("indexproduct", JSON.stringify(jsonParse));
       				tr.remove();
-
-					updateCartBadge();
-					loadTotalArea();
+					luuJson();
 				}
 			});
+
+		function capnhatTBODY(tr, id, newQty){
+			let cardtotal=tr.querySelector(".cart_total_price");
+			let bodola=Number(String(jsonParse[id].price).replace(/[$]+/g,""))
+			let input=tr.querySelector(".cart_quantity_input");
+
+			jsonParse[id].qty=newQty;
+
+			input.value=newQty;
+			cardtotal.innerText = "$" + (newQty * bodola);
+
+			jsonParse[id].qty=newQty;
+		}
+
+		function luuJson(){
+			let jsonString=JSON.stringify(jsonParse);
+			localStorage.setItem("indexproduct", jsonString);
+
+			updateCartBadge();
+			loadTotalArea();
+		}	
+
 		function loadTotalArea(){
 			let TongTotal=0;
 			Object.values(jsonParse).forEach(item=>{
@@ -594,6 +596,7 @@
 			if (!ul) return;
 
 			let li1=ul.querySelector(".li1 span")
+			let li4 = ul.querySelector(".li4 span");
 			let li2=2;
 
 			let li3=ul.querySelector('.li3 span').textContent.trim().toLowerCase();
@@ -602,7 +605,6 @@
 			}
 			else li3=Number(li3.replace(/[^0-9.-]+/g, ""));
 
-			let li4 = ul.querySelector(".li4 span");
 			let Tinhli4=0;
 			if(TongTotal>0) Tinhli4=TongTotal+li2-li3;
 			else li4=0;
@@ -616,8 +618,8 @@
 			let totalQty = 0;
 			Object.values(jsonParse).map(function(item){
 				totalQty+=item.qty;
-			giohang.textContent = totalQty;
 		})
+			giohang.textContent = totalQty;
 	}
 
 		loadTotalArea();
